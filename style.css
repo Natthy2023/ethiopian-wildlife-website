@@ -1,75 +1,285 @@
+:root {
+  --bs-success-rgb: 25, 135, 84;
+}
+
+/* Fix for fixed navbar covering content */
 body {
+  padding-top: 80px;
   position: relative;
 }
+
+/* Hero Section */
+#home {
+  width: 100%;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+             url(https://images.unsplash.com/photo-1572888195250-3037a59d3578?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxldGhpb3BpYW4lMjBoaWdobGFuZHMlMjBsYW5kc2NhcGUlMjBtb3VudGFpbnN8ZW58MXx8fHwxNzY5NjA1MDk2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+/* Gold color for second heading */
 .display-3:nth-child(2) {
   color: #E9C893;
 }
-section#home {
- background: linear-gradient(rgba(0,0,0,0.5)) ,url(https://images.unsplash.com/photo-1572888195250-3037a59d3578?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxldGhpb3BpYW4lMjBoaWdobGFuZHMlMjBsYW5kc2NhcGUlMjBtb3VudGFpbnN8ZW58MXx8fHwxNzY5NjA1MDk2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral);
- background-size: cover;
- background-repeat: no-repeat;
- background-attachment: fixed;
- background-position: center;
- height: 650px;
-}
 
+/* Card styles */
 .card {
   border: none;
   border-radius: 10px;
   box-shadow: 0 0 2px hsla(0, 0%, 0%, 0.229);
   background-color: #fff;
-}
-.card:hover {
-   transform: scale(1.02);
-    box-shadow: 0 0 15px hsla(0, 0%, 0%, 0.089);
-}
-#home .btn-secondary {
- backdrop-filter: blur(5px);
- background-color: hsla(0, 0%, 100%, 0.105);
- transition: all 0.3s ease;
-}#home .btn-secondary:hover {
- background-color: hsla(0, 0%, 100%, 0.15);
- transform: scale(1.05);
-}
-#home .btn-success {
- background-color: hsl(153, 40%, 30%);
- transition: all 0.3s ease;
-}#home .btn-success:hover {
- background-color: hsla(153, 40%, 30%, 0.8);
- transform: scale(1.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
-.card-link, .card-link i{
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px hsla(0, 0%, 0%, 0.089);
+}
+
+/* Button styles */
+#home .btn-secondary {
+  backdrop-filter: blur(5px);
+  background-color: hsla(0, 0%, 100%, 0.105);
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+#home .btn-secondary:hover {
+  background-color: hsla(0, 0%, 100%, 0.15);
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+#home .btn-success {
+  background-color: hsl(153, 40%, 30%);
+  transition: all 0.3s ease;
+  border: none;
+}
+
+#home .btn-success:hover {
+  background-color: hsla(153, 40%, 30%, 0.8);
+  transform: scale(1.05);
+}
+
+/* Card link styles */
+.card-link, .card-link i {
   text-decoration: none;
   font-weight: 500;
+  transition: all 0.2s ease;
 }
-.card-link:hover, .card-link i:hover{
- text-decoration: underline;
- color:black;
+
+.card-link:hover, .card-link:hover i {
+  text-decoration: underline !important;
+  color: #000 !important;
 }
+
+/* Card image styles */
 .card img {
-  max-height:400px;
-  object-fit:fill;
+  max-height: 400px;
+  object-fit: cover;
   transition: all 0.5s ease;
+  width: 100%;
 }
-.card img:hover {
- object-fit: cover;
+
+.card:hover img {
+  object-fit: cover;
+  transform: scale(1.05);
 }
+
+/* Down arrow animation */
 #down-arrow {
- animation: downUp 0.5s ease-in-out  infinite alternate;
+  animation: downUp 0.5s ease-in-out infinite alternate;
+  cursor: pointer;
 }
-#down-arrow:hover{
+
+#down-arrow:hover {
   animation-play-state: paused;
 }
+
 @keyframes downUp {
-  0%,50%{
+  0%, 50% {
     transform: translateY(4px);
-  }51%,100%{
+  }
+  51%, 100% {
     transform: translateY(-4px);
   }
 }
-@media(max-width: 768px){
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  #home .display-1 {
+    font-size: 3rem !important;
+  }
+  #home .display-3 {
+    font-size: 2.5rem !important;
+  }
+  .display-5 {
+    font-size: 2rem !important;
+  }
+  body {
+    padding-top: 70px;
+  }
+  
+  /* Fix for parallax on mobile */
+  #home {
+    background-attachment: scroll;
+    min-height: 500px;
+  }
+  
+  /* Input wrapper for mobile */
   #input-wrapper {
-  flex-direction: column;
+    flex-direction: column;
+    align-items: center !important;
+  }
+  
+  #input-wrapper .form-control {
+    width: 100% !important;
+    max-width: 400px;
+    margin-bottom: 1rem;
+  }
+  
+  .card-img-top {
+    height: 250px;
+  }
 }
+
+@media (max-width: 576px) {
+  #home .display-1 {
+    font-size: 2.5rem !important;
+  }
+  #home .display-3 {
+    font-size: 2rem !important;
+  }
+  .display-5 {
+    font-size: 1.75rem !important;
+  }
+  
+  #home {
+    min-height: 450px;
+    background-position: 60% center;
+  }
+  
+  .card-img-top {
+    height: 200px;
+  }
+}
+
+/* Card specific styles */
+#species .card {
+  height: 100%;
+  min-height: 580px;
+}
+
+@media (max-width: 992px) {
+  #species .card {
+    min-height: auto;
+    max-width: 500px;
+  }
+}
+
+#conservation .card,
+#ecosystems .card,
+#learn .card {
+  height: 100%;
+}
+
+#ecosystems .card-title {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 1400px) {
+  #ecosystems .card-title {
+    font-size: 1.25rem;
+  }
+}
+
+#learn .card {
+  min-height: 250px;
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 992px) {
+  .navbar-nav {
+    text-align: center;
+  }
+  
+  .navbar-collapse {
+    padding: 1rem 0;
+  }
+  
+  section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .container-fluid {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+/* Improve button accessibility */
+.btn:focus,
+.form-control:focus {
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-success-rgb), 0.25) !important;
+  outline: none;
+}
+
+/* Footer improvements */
+footer h4 {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+/* Ensure proper spacing on all devices */
+@media (min-width: 1400px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 1140px;
+  }
+}
+
+/* Fix for Safari backdrop-filter */
+@supports not (backdrop-filter: blur(5px)) {
+  #home .btn-secondary {
+    background-color: hsla(0, 0%, 100%, 0.2);
+  }
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid hsl(153, 40%, 30%);
+  outline-offset: 2px;
+}
+
+/* Improve contrast for text */
+.text-secondary {
+  color: #6c757d !important;
+}
+
+/* Animation for page load */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  animation: fadeIn 0.5s ease-out;
 }
